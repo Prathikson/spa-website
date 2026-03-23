@@ -1,0 +1,444 @@
+/* @import MUST be first — before any @tailwind directives */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500&family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Poppins', system-ui, sans-serif;
+  --font-body:    'Poppins', system-ui, sans-serif;
+  --font-ko:      'Black Han Sans', sans-serif;
+  --font-ko-body: 'Noto Sans KR', sans-serif;
+
+  --bg:      #f1f1f1;
+  --ink:     #1b1b1b;
+  --muted:   #6b6b6b;
+  --border:  #dddad5;
+  --rose:    #f2b8c6;
+  --rose-s:  #e8547a;
+  --plum:    #d4bcf5;
+  --plum-s:  #7c3aed;
+  --sage:    #b8f0cf;
+  --sage-s:  #16a34a;
+  --sky:     #b8e4fd;
+  --sky-s:   #0284c7;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: hidden; scroll-behavior: auto; }
+
+body {
+  font-family: 'Poppins', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: none;
+}
+
+/* Force Poppins on every heading — hard-coded, no variable risk */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', system-ui, sans-serif !important;
+}
+
+/* KO font switching */
+body.lang-ko h1,
+body.lang-ko h2,
+body.lang-ko h3,
+body.lang-ko h4,
+body.lang-ko h5,
+body.lang-ko h6 {
+  font-family: 'Black Han Sans', sans-serif !important;
+  word-break: keep-all;
+  letter-spacing: 0.01em;
+}
+body.lang-ko p,
+body.lang-ko span,
+body.lang-ko a,
+body.lang-ko button,
+body.lang-ko li {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* EN/KO helpers */
+.ko { display: none !important; }
+body.lang-ko .en { display: none !important; }
+body.lang-ko .ko { display: revert !important; }
+
+/* ── CURSOR ─────────────────────────────────────────── */
+* { cursor: none !important; }
+.cursor-main {
+  width: 10px; height: 10px;
+  background: var(--ink);
+  border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 99999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  transition: width .25s var(--ease-out), height .25s var(--ease-out), background .2s;
+}
+.cursor-main.hovered {
+  width: 52px; height: 52px;
+  background: transparent;
+  border: 1.5px solid var(--rose-s);
+}
+.cursor-main.dragging {
+  width: 72px; height: 72px;
+  background: transparent;
+  border: 1.5px solid var(--rose-s);
+}
+.cursor-trail {
+  position: fixed; top: 0; left: 0;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--rose-s);
+  pointer-events: none;
+  z-index: 99990;
+  transform: translate(-50%,-50%);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* ── PRELOADER ──────────────────────────────────────── */
+.preloader {
+  position: fixed; inset: 0;
+  background: var(--ink);
+  z-index: 100000;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.preloader-word {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: clamp(60px, 12vw, 140px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #fff;
+  display: flex; overflow: hidden;
+}
+.preloader-word span { display: inline-block; transform: translateY(110%); }
+.preloader-bar {
+  width: 200px; height: 2px;
+  background: rgba(255,255,255,.1);
+  border-radius: 4px;
+  margin-top: 40px; overflow: hidden;
+}
+.preloader-bar-fill {
+  height: 100%; width: 0;
+  background: var(--rose-s);
+  border-radius: 4px;
+}
+.preloader-pct {
+  font-size: 11px; letter-spacing: .12em;
+  color: rgba(255,255,255,.35);
+  margin-top: 10px;
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+/* ── NAV ────────────────────────────────────────────── */
+.nav-bar {
+  position: fixed; top: 20px;
+  left: 50%; transform: translateX(-50%);
+  z-index: 5000;
+  background: rgba(17,17,16,.88);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px;
+  padding: 0 6px;
+  height: 54px;
+  display: flex; align-items: center; gap: 4px;
+  box-shadow: 0 4px 32px rgba(0,0,0,.2);
+  transition: all .3s var(--ease-out);
+}
+.nav-logo {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 15px; font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-decoration: none;
+  padding: 0 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rose-s); }
+.nav-sep { width: 1px; height: 22px; background: rgba(255,255,255,.1); }
+.nav-pill-link {
+  padding: 7px 14px; border-radius: 14px;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 13px; font-weight: 400;
+  color: rgba(255,255,255,.6);
+  text-decoration: none;
+  background: none; border: none;
+  transition: all .2s;
+  display: flex; align-items: center; gap: 5px;
+  white-space: nowrap;
+}
+.nav-pill-link:hover, .nav-pill-link.active {
+  background: rgba(255,255,255,.1);
+  color: #fff;
+}
+.nav-book-btn {
+  font-family: 'Poppins', system-ui, sans-serif;
+  background: #fff;
+  color: var(--ink);
+  border-radius: 14px;
+  padding: 8px 18px;
+  font-size: 13px; font-weight: 600;
+  text-decoration: none;
+  border: none;
+  transition: background .2s, transform .2s;
+  margin-left: 4px;
+}
+.nav-book-btn:hover { background: var(--rose); transform: translateY(-1px); }
+
+/* Lang toggle — rectangle with soft rounded edges */
+.lang-toggle {
+  display: flex;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+}
+.lang-btn {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 11px; font-weight: 600;
+  padding: 5px 12px; border-radius: 7px;
+  border: none; background: transparent;
+  color: rgba(255,255,255,.5);
+  letter-spacing: .03em;
+  transition: all .2s;
+}
+.lang-btn.active { background: var(--rose-s); color: #fff; }
+
+/* ── MEGA MENU ──────────────────────────────────────── */
+.mega-wrap {
+  position: fixed;
+  top: 84px; left: 50%;
+  transform: translateX(-50%) translateY(-12px);
+  width: min(calc(100vw - 40px), 1100px);
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 12px 80px rgba(0,0,0,.14), 0 0 0 1px rgba(0,0,0,.05);
+  overflow: hidden;
+  z-index: 4999;
+  display: grid; grid-template-columns: 240px 1fr;
+  opacity: 0; pointer-events: none;
+  transition: opacity .28s var(--ease-out), transform .28s var(--ease-out);
+}
+.mega-wrap.open {
+  opacity: 1; pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+.mega-left {
+  background: var(--ink);
+  padding: 36px 32px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+}
+.mega-right { padding: 28px 36px; }
+.mega-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+  align-content: start;
+}
+.mega-item {
+  display: block; padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  transition: padding-left .2s var(--ease-out);
+}
+.mega-item:hover { padding-left: 6px; }
+.mega-item-name {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 14px; font-weight: 500; color: var(--ink);
+  transition: color .2s;
+  display: flex; align-items: center; gap: 8px;
+}
+.mega-item:hover .mega-item-name { color: var(--rose-s); }
+.mega-item-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.mega-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── BIG TYPE — ALL HARDCODED POPPINS ──────────────── */
+/* Never rely on CSS vars for these — always explicit font-family */
+.t-hero {
+  font-family: 'Poppins', system-ui, sans-serif !important;
+  font-size: clamp(68px, 11vw, 168px);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.88;
+}
+.t-xl {
+  font-family: 'Poppins', system-ui, sans-serif !important;
+  font-size: clamp(48px, 7.5vw, 112px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+.t-lg {
+  font-family: 'Poppins', system-ui, sans-serif !important;
+  font-size: clamp(34px, 4.8vw, 68px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+.t-md {
+  font-family: 'Poppins', system-ui, sans-serif !important;
+  font-size: clamp(22px, 4.0vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.t-label {
+  font-family: 'Poppins', system-ui, sans-serif !important;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.t-label::before {
+  content: ''; width: 18px; height: 1.5px;
+  background: currentColor; display: block;
+}
+
+/* Text clip reveal */
+.clip-wrap { overflow: hidden; }
+.clip-inner { display: block; will-change: transform; }
+
+/* ── BUTTONS ────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 14px;
+  font-family: 'Poppins', system-ui, sans-serif !important;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none; border: none;
+  transition: all .3s var(--ease-out);
+  position: relative; overflow: hidden;
+}
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-dark:hover { background: #2a2a28; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
+.btn-outline:hover { border-color: var(--ink); transform: translateY(-2px); }
+.btn-rose { background: var(--rose-s); color: #fff; }
+.btn-rose:hover { background: #d4406a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,84,122,.3); }
+.btn-ghost-white { background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.15); }
+.btn-ghost-white:hover { background: rgba(255,255,255,.22); transform: translateY(-2px); }
+
+/* ── CARD ───────────────────────────────────────────── */
+.card {
+  background: #fff; border-radius: 24px;
+  border: 1px solid var(--border);
+  transition: box-shadow .3s var(--ease-out), transform .3s var(--ease-out);
+}
+.card:hover { box-shadow: 0 20px 60px rgba(0,0,0,.1); transform: translateY(-4px); }
+
+/* ── BENTO ──────────────────────────────────────────── */
+.bento { display: grid; gap: 14px; }
+.bento-2 { grid-template-columns: 1fr 1fr; }
+.bento-3 { grid-template-columns: 1fr 1fr 1fr; }
+.bento-tall { grid-row: span 2; }
+
+/* ── SERVICE ROW ────────────────────────────────────── */
+.svc-row {
+  display: flex; align-items: center;
+  gap: 20px; padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none; color: var(--ink);
+  transition: padding-left .25s var(--ease-out);
+  position: relative;
+}
+.svc-row::after {
+  content: ''; position: absolute;
+  left: 0; top: 0; bottom: 0; width: 0;
+  background: var(--rose);
+  border-radius: 0 8px 8px 0;
+  transition: width .25s var(--ease-out);
+  z-index: -1;
+}
+.svc-row:hover { padding-left: 20px; }
+.svc-row:hover::after { width: 4px; }
+
+/* ── DRAG GALLERY ───────────────────────────────────── */
+.drag-gallery-track {
+  display: flex; gap: 16px;
+  user-select: none;
+  will-change: transform;
+  padding: 20px 0 40px;
+}
+.drag-card {
+  flex-shrink: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: box-shadow .3s;
+}
+.drag-card:hover { box-shadow: 0 24px 80px rgba(0,0,0,.2); }
+.drag-cursor-label {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: clamp(60px, 10vw, 120px);
+  font-weight: 800; color: rgba(255,255,255,.06);
+  letter-spacing: -0.04em;
+  pointer-events: none;
+}
+
+/* ── PARALLAX CONTAINER ─────────────────────────────── */
+.parallax-outer { overflow: hidden; position: relative; }
+.parallax-inner { will-change: transform; }
+
+/* ── MARQUEE ────────────────────────────────────────── */
+.marquee-strip {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+}
+.marquee-inner-track {
+  display: flex; animation: marqueeMove 25s linear infinite;
+  width: max-content;
+}
+.marquee-inner-track:hover { animation-play-state: paused; }
+@keyframes marqueeMove { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* ── ACCORDION ──────────────────────────────────────── */
+.acc-body { overflow: hidden; height: 0; }
+.acc-btn {
+  font-family: 'Poppins', system-ui, sans-serif;
+  background: none; border: none; width: 100%; text-align: left;
+}
+
+/* ── PRICE CARD ─────────────────────────────────────── */
+.price-card {
+  background: #fff; border-radius: 24px;
+  border: 1.5px solid var(--border);
+  padding: 32px; display: flex;
+  flex-direction: column; gap: 24px;
+  transition: border-color .3s, box-shadow .3s, transform .3s var(--ease-out);
+}
+.price-card:hover { border-color: var(--ink); box-shadow: 0 20px 60px rgba(0,0,0,.1); transform: translateY(-4px); }
+.price-card.featured { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+/* ── CHIP ───────────────────────────────────────────── */
+.chip {
+  display: inline-flex; align-items: center;
+  padding: 5px 12px; border-radius: 8px;
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 12px; font-weight: 500;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+.chip-rose   { background: var(--rose);  border-color: transparent; color: var(--ink); }
+.chip-plum   { background: var(--plum);  border-color: transparent; color: var(--ink); }
+.chip-sage   { background: var(--sage);  border-color: transparent; color: var(--ink); }
+.chip-sky    { background: var(--sky);   border-color: transparent; color: var(--ink); }
+
+/* ── SCROLLBAR ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
