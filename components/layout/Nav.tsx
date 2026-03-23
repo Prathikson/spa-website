@@ -61,7 +61,7 @@ export function Nav() {
         </div>
 
         {/* Mobile */}
-        <button className="lg:hidden text-white/60 hover:text-white ml-3 mr-1" onClick={() => setMob(!mob)}>
+        <button className="lg:hidden text-white/60 hover:text-white ml-auto mr-1" onClick={() => setMob(!mob)}>
           {mob ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
@@ -119,30 +119,38 @@ export function Nav() {
         </div>
       </div>
 
-      {/* Mobile full-screen */}
-      <div className={`fixed inset-0 z-[4990] bg-ink flex flex-col justify-center px-8 transition-all duration-600 ${mob ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-        <div className="flex flex-col gap-1 mb-10">
-          {[
-            { href: '/',         en: 'Home',     ko: '홈' },
-            { href: '/services', en: 'Services', ko: '서비스' },
-            { href: '/about',    en: 'About',    ko: '소개' },
-            { href: '/contact',  en: 'Contact',  ko: '연락처' },
-          ].map((l, i) => (
-            <Link key={l.href} href={l.href}
-              className="text-white/70 hover:text-white no-underline transition-colors"
-              style={{ fontSize: 'clamp(40px,8vw,72px)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1.05, transitionDelay: mob ? `${i*50}ms` : '0ms' }}
-              onClick={() => setMob(false)}>
-              <span className="en">{l.en}</span><span className="ko">{l.ko}</span>
+      {/* Mobile full-screen - Fixed alignment */}
+      <div className={`fixed inset-0 z-[4990] bg-ink transition-all duration-600 ${mob ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className="h-full flex flex-col justify-center px-6 sm:px-8">
+          <div className="flex flex-col gap-1 mb-10">
+            {[
+              { href: '/',         en: 'Home',     ko: '홈' },
+              { href: '/services', en: 'Services', ko: '서비스' },
+              { href: '/about',    en: 'About',    ko: '소개' },
+              { href: '/contact',  en: 'Contact',  ko: '연락처' },
+            ].map((l, i) => (
+              <Link key={l.href} href={l.href}
+                className="text-white/70 hover:text-white no-underline transition-colors"
+                style={{ 
+                  fontSize: 'clamp(36px, 10vw, 72px)', 
+                  fontWeight: 700, 
+                  letterSpacing: '-0.04em', 
+                  lineHeight: 1.05, 
+                  transitionDelay: mob ? `${i*50}ms` : '0ms' 
+                }}
+                onClick={() => setMob(false)}>
+                <span className="en">{l.en}</span><span className="ko">{l.ko}</span>
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+            <Link href="/contact" className="btn btn-rose" onClick={() => setMob(false)}>
+              <span className="en">Book Now</span><span className="ko">예약하기</span>
             </Link>
-          ))}
-        </div>
-        <div className="flex items-center gap-3">
-          <Link href="/contact" className="btn btn-rose" onClick={() => setMob(false)}>
-            <span className="en">Book Now</span><span className="ko">예약하기</span>
-          </Link>
-          <div className="lang-toggle">
-            <button className={`lang-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
-            <button className={`lang-btn ${lang === 'ko' ? 'active' : ''}`} onClick={() => setLang('ko')}>한국어</button>
+            <div className="lang-toggle">
+              <button className={`lang-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
+              <button className={`lang-btn ${lang === 'ko' ? 'active' : ''}`} onClick={() => setLang('ko')}>한국어</button>
+            </div>
           </div>
         </div>
       </div>
