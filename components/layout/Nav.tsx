@@ -28,8 +28,8 @@ export function Nav() {
       <div ref={bar} className="nav-bar" style={{ opacity: 0 }}>
         <Link href="/" className="nav-logo">
           <span className="nav-dot" />
-          <span className="en">Velour</span>
-          <span className="ko">벨루어</span>
+          <span className="en">Shinhara</span>
+          <span className="ko">신하라</span>
         </Link>
         <div className="nav-sep" />
 
@@ -79,7 +79,7 @@ export function Nav() {
             background: 'radial-gradient(circle at 40% 60%, rgba(232,84,122,.2) 0%, transparent 60%), radial-gradient(circle at 80% 20%, rgba(124,58,237,.15) 0%, transparent 50%)'
           }} />
           <div className="relative z-10">
-            <p className="text-white/30 text-[10px] tracking-widest uppercase mb-4">Velour Studio</p>
+            <p className="text-white/30 text-[10px] tracking-widest uppercase mb-4">Shinhara Beauty</p>
             <p className="text-white text-2xl font-bold tracking-tight leading-tight mb-2">
               <span className="en">All Services</span><span className="ko">모든 서비스</span>
             </p>

@@ -42,7 +42,7 @@ export function ContactPageContent() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-14 grid md:grid-cols-2 gap-16 md:gap-24">
           <div>
             <div className="t-label mb-10"><span className="en">Studio Info</span><span className="ko">스튜디오 정보</span></div>
-            {[{ l: { en: 'Address', ko: '주소' }, v: '10245 Jasper Ave NW\nEdmonton, AB T5J 3N4' }, { l: { en: 'Hours', ko: '영업시간' }, v: 'Tue–Fri 10am–8pm\nSat–Sun 9am–6pm' }, { l: { en: 'Phone', ko: '전화' }, v: '+1 (780) 555-0199' }, { l: { en: 'Email', ko: '이메일' }, v: 'hello@velourstudio.ca' }].map(item => (
+            {[{ l: { en: 'Address', ko: '주소' }, v: '10245 Jasper Ave NW\nEdmonton, AB T5J 3N4' }, { l: { en: 'Hours', ko: '영업시간' }, v: 'Tue–Fri 10am–8pm\nSat–Sun 9am–6pm' }, { l: { en: 'Phone', ko: '전화' }, v: '+1 (780) 555-0199' }, { l: { en: 'Email', ko: '이메일' }, v: 'hello@shinharabeauty.ca' }].map(item => (
               <div key={item.l.en} className="py-6 border-t border-border">
                 <p className="text-[10px] tracking-widest uppercase text-muted mb-2"><span className="en">{item.l.en}</span><span className="ko">{item.l.ko}</span></p>
                 <p className="text-[16px] text-ink whitespace-pre-line leading-relaxed font-normal">{item.v}</p>

@@ -91,8 +91,8 @@ export function AboutBento() {
           {/* Big text card */}
           <div className="bento-item md:col-span-5 rounded-[28px] p-10 flex flex-col justify-between" style={{ background: 'rgba(255,255,255,.05)', minHeight: 320 }}>
             <p className="text-white/60 text-[16px] leading-relaxed">
-              <span className="en">Velour was born from one belief: beauty is not a luxury — it is a language. We speak it through every treatment, every product, every quiet moment.</span>
-              <span className="ko">벨루어는 하나의 믿음에서 태어났습니다: 아름다움은 사치가 아닌 언어입니다.</span>
+              <span className="en">Shinhara was born from one belief: beauty is not a luxury — it is a language. We speak it through every treatment, every product, every quiet moment.</span>
+              <span className="ko">신하라 하나의 믿음에서 태어났습니다: 아름다움은 사치가 아닌 언어입니다.</span>
             </p>
             <Link href="/about" className="btn btn-ghost-white self-start mt-8">
               <span className="en">Our Story</span><span className="ko">소개 보기</span>
@@ -274,7 +274,7 @@ export function DragGallery() {
               {/* Accent chip */}
               <div className="absolute top-4 left-4 px-3 py-1.5 rounded-lg text-[11px] font-semibold text-ink"
                 style={{ background: card.accent }}>
-                Velour
+                Shinhara
               </div>
             </div>
           ))}
@@ -498,7 +498,7 @@ export function ContactSection() {
               { l: { en: 'Address', ko: '주소' }, v: '10245 Jasper Ave NW\nEdmonton, AB T5J 3N4' },
               { l: { en: 'Hours', ko: '영업시간' }, v: 'Tue – Fri   10am – 8pm\nSat – Sun  9am – 6pm' },
               { l: { en: 'Phone', ko: '전화' }, v: '+1 (780) 555-0199' },
-              { l: { en: 'Email', ko: '이메일' }, v: 'hello@velourstudio.ca' },
+              { l: { en: 'Email', ko: '이메일' }, v: 'hello@shinharabeauty.ca' },
             ].map(item => (
               <div key={item.l.en} className="py-6 border-t border-border">
                 <p className="text-[10px] tracking-widest uppercase text-muted mb-2">

@@ -8,7 +8,7 @@ export function Footer() {
         <div className="py-16 grid md:grid-cols-4 gap-10 border-b border-white/6">
           <div className="md:col-span-1">
             <p className="text-white font-bold text-xl tracking-tight mb-3">
-              <span className="en">Velour</span><span className="ko">벨루어</span>
+              <span className="en">Shinhara</span><span className="ko">신하라</span>
             </p>
             <p className="text-white/40 text-sm leading-relaxed">
               <span className="en">Edmonton&apos;s sanctuary for beauty &amp; wellness.</span>
@@ -59,8 +59,8 @@ export function Footer() {
         </div>
         <div className="py-6 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-white/25 text-xs">
-            <span className="en">&copy; 2025 Velour Studio Edmonton. All rights reserved.</span>
-            <span className="ko">&copy; 2025 벨루어 스튜디오 에드먼턴. 모든 권리 보유.</span>
+            <span className="en">&copy; 2026 Shinhara Beauty Edmonton. All rights reserved.</span>
+            <span className="ko">&copy; 2026 신하라 스튜디오 에드먼턴. 모든 권리 보유.</span>
           </p>
           <div className="flex gap-2">
             {['ig', 'tk', 'fb'].map(s => (

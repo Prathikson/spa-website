@@ -3,7 +3,7 @@ export type T = { en: string; ko: string }
 export const t = (obj: T, lang: Lang) => obj[lang]
 
 export const NAV = {
-  logo:     { en: 'Velour',    ko: '벨루어' },
+  logo:     { en: 'Shinhara',    ko: '신하라' },
   services: { en: 'Services',  ko: '서비스' },
   about:    { en: 'About',     ko: '소개' },
   gallery:  { en: 'Gallery',   ko: '갤러리' },
@@ -286,8 +286,8 @@ export const SERVICES = [
 ]
 
 export const TESTIMONIALS = [
-  { initial: 'A', name: 'Amelia R.', service: { en: 'Nail Art', ko: '네일 아트' }, rating: 5, text: { en: 'The attention to detail at Velour is unmatched. My nail artist understood exactly what I wanted. Pure magic.', ko: '벨루어의 디테일에 대한 집중력은 타의 추종을 불허합니다. 아티스트가 원하는 것을 정확히 이해했어요.' } },
-  { initial: 'S', name: 'Sofia K.',  service: { en: 'HydraFacial', ko: '하이드라페이셜' }, rating: 5, text: { en: "I've been to dozens of spas, nothing compares to Velour. My skin glowed for two weeks straight.", ko: '수십 군데 스파를 다녀봤지만 벨루어와 비교가 안돼요. 2주 내내 피부가 빛났습니다.' } },
+  { initial: 'A', name: 'Amelia R.', service: { en: 'Nail Art', ko: '네일 아트' }, rating: 5, text: { en: 'The attention to detail at Shinhara is unmatched. My nail artist understood exactly what I wanted. Pure magic.', ko: '신하라의 디테일에 대한 집중력은 타의 추종을 불허합니다. 아티스트가 원하는 것을 정확히 이해했어요.' } },
+  { initial: 'S', name: 'Sofia K.',  service: { en: 'HydraFacial', ko: '하이드라페이셜' }, rating: 5, text: { en: "I've been to dozens of spas, nothing compares to Sinhara. My skin glowed for two weeks straight.", ko: '수십 군데 스파를 다녀봤지만 신하라와 비교가 안돼요. 2주 내내 피부가 빛났습니다.' } },
   { initial: 'M', name: 'Maya T.',   service: { en: 'Laser', ko: '레이저' }, rating: 5, text: { en: 'Completely transformative. Professional, gentle, and I felt totally at ease the whole time.', ko: '완전히 변화를 가져다 줬어요. 전문적이고 부드러우며 내내 편안했습니다.' } },
 ]
 

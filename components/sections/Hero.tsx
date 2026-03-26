@@ -117,7 +117,7 @@ export function Hero() {
       {/* Giant background word */}
       <div className="hero-bg-word absolute inset-0 flex items-center justify-center pointer-events-none select-none z-[1]">
         <span className="hidden md:block font-display font-bold text-[20vw] text-ink/[0.03] leading-none tracking-[-0.06em] whitespace-nowrap">
-          VELOUR
+          SHINHARA
         </span>
       </div>
 

@@ -62,8 +62,8 @@ export function AboutPageContent() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-14 grid md:grid-cols-2 gap-16 items-center">
           <div>
             <p className="text-muted text-[16px] leading-relaxed mb-6">
-              <span className="en">Velour was born from one belief: beauty is not a luxury — it is a language. Founded in Edmonton in 2019, we grew from a single-room studio to the city&apos;s most trusted luxury beauty destination.</span>
-              <span className="ko">벨루어는 하나의 믿음에서 태어났습니다. 2019년 에드먼턴에서 설립되어 성장했습니다.</span>
+              <span className="en">Shinhara was born from one belief: beauty is not a luxury — it is a language. Founded in Edmonton in 2019, we grew from a single-room studio to the city&apos;s most trusted luxury beauty destination.</span>
+              <span className="ko">신하라는 하나의 믿음에서 태어났습니다. 2019년 에드먼턴에서 설립되어 성장했습니다.</span>
             </p>
             <p className="text-muted leading-relaxed mb-10">
               <span className="en">Our artists are trained not just in technique, but in presence — the ability to read what you need before you even say it.</span>
@@ -142,7 +142,7 @@ export function AboutPageContent() {
       </section>
 
       <section className="py-16 bg-ink text-center">
-        <div className="clip-wrap mb-6 inline-block"><div className="section-clip t-lg text-white" style={{ transform: 'translateY(110%)' }}><span className="en">Ready to experience Velour?</span><span className="ko">벨루어를 경험할 준비가 됐나요?</span></div></div>
+        <div className="clip-wrap mb-6 inline-block"><div className="section-clip t-lg text-white" style={{ transform: 'translateY(110%)' }}><span className="en">Ready to experience Shinhara?</span><span className="ko">신하라벨루어를 경험할 준비가 됐나요?</span></div></div>
         <div className="mt-4"><Link href="/contact" className="btn btn-rose inline-flex"><span className="en">Book Now</span><span className="ko">예약하기</span></Link></div>
       </section>
     </div>
